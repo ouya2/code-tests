@@ -9,14 +9,14 @@ import java.util.Map;
 public final class OperatorRegistry
 {
     private static Map<String, Operator> registry = ImmutableMap.<String, Operator>builder()
-                                                    .put(OperatorConstants.PLUS, new Addition())
-                                                    .put(OperatorConstants.MINUS, new Subtraction())
-                                                    .put(OperatorConstants.MULTIPLY, new Multiplication())
-                                                    .put(OperatorConstants.DIVIDE, new Division())
-                                                    .put(OperatorConstants.SQRT, new SquareRoot())
-                                                    .put(OperatorConstants.POWER, new Power())
-                                                    .put(OperatorConstants.UNDO, new Undo())
-                                                    .put(OperatorConstants.CLEAR, new Clear())
+                                                    .put(OperatorConstants.PLUS, new AdditionOperator())
+                                                    .put(OperatorConstants.MINUS, new SubtractOperator())
+                                                    .put(OperatorConstants.MULTIPLY, new MultiplyOperator())
+                                                    .put(OperatorConstants.DIVIDE, new DivisionOperator())
+                                                    .put(OperatorConstants.SQRT, new SquareRootOperator())
+                                                    .put(OperatorConstants.POWER, new PowerOperator())
+                                                    .put(OperatorConstants.UNDO, new UndoOperator())
+                                                    .put(OperatorConstants.CLEAR, new ClearOperator())
                                                     .build();
 
     public static Operator getOperator(String symbol)
