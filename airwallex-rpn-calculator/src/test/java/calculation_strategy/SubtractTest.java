@@ -1,17 +1,19 @@
-package rpn.operator;
-
-import org.junit.Before;
-import org.junit.Test;
+package calculation_strategy;
 
 import static junit.framework.TestCase.assertEquals;
 
-public class SubtractionTest
+import org.junit.Before;
+import org.junit.Test;
+import rpn.calculation_strategy.Subtract;
+import rpn.operator.SubtractOperator;
+
+public class SubtractTest
 {
-    Subtraction operator;
+    Subtract operator;
     @Before
     public void setup()
     {
-        operator = new Subtraction();
+        operator = new Subtract();
     }
 
     @Test

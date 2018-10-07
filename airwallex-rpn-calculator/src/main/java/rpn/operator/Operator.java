@@ -1,18 +1,19 @@
 package rpn.operator;
 
+import rpn.calculation_strategy.CalculateStrategy;
+
 /**
  * The calculation operator
  */
 public interface Operator
 {
+
     /**
-     * Perform the calculation based on operator.
+     * Return the calculation strategy for the operator
      *
-     * @param firstParameter
-     * @param secondParameter
-     * @return Double as result
+     * @return {@link CalculateStrategy}
      */
-    Double calculate(Double firstParameter, Double secondParameter);
+    CalculateStrategy getCalculationStrategy();
 
     /**
      * Return number of parameters

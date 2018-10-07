@@ -1,17 +1,18 @@
-package rpn.operator;
-
-import org.junit.Before;
-import org.junit.Test;
+package calculation_strategy;
 
 import static junit.framework.TestCase.assertEquals;
 
-public class AdditionTest
+import org.junit.Before;
+import org.junit.Test;
+import rpn.calculation_strategy.Add;
+
+public class AddTest
 {
-    Addition operator;
+    Add operator;
     @Before
     public void setup()
     {
-        operator = new Addition();
+        operator = new Add();
     }
 
     @Test

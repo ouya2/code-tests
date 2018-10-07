@@ -1,17 +1,19 @@
-package rpn.operator;
-
-import org.junit.Before;
-import org.junit.Test;
+package calculation_strategy;
 
 import static junit.framework.TestCase.assertEquals;
 
-public class MultiplicationTest
+import org.junit.Before;
+import org.junit.Test;
+import rpn.calculation_strategy.Multiply;
+import rpn.operator.MultiplyOperator;
+
+public class MultiplyTest
 {
-    Multiplication operator;
+    Multiply operator;
     @Before
     public void setup()
     {
-        operator = new Multiplication();
+        operator = new Multiply();
     }
 
     @Test

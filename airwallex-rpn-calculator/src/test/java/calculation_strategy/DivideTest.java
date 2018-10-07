@@ -1,18 +1,19 @@
-package rpn.operator;
-
-import org.junit.Before;
-import org.junit.Test;
+package calculation_strategy;
 
 import static junit.framework.TestCase.assertEquals;
 
-public class DivisionTest
+import org.junit.Before;
+import org.junit.Test;
+import rpn.calculation_strategy.Divide;
+
+public class DivideTest
 {
-    Division operator;
+    Divide operator;
 
     @Before
     public void setup()
     {
-        operator = new Division();
+        operator = new Divide();
     }
 
     @Test

@@ -1,9 +1,11 @@
-package rpn.operator;
+package calculation_strategy;
+
+import static junit.framework.TestCase.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import static junit.framework.TestCase.assertEquals;
+import rpn.calculation_strategy.Power;
+import rpn.operator.PowerOperator;
 
 public class PowerTest
 {

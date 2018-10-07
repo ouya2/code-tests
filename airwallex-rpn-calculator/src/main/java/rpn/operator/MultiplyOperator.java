@@ -3,19 +3,21 @@ package rpn.operator;
 import static rpn.operator.OperatorConstants.DIVIDE;
 import static rpn.operator.OperatorConstants.MULTIPLY;
 
+import rpn.calculation_strategy.CalculateStrategy;
+import rpn.calculation_strategy.Multiply;
+
 /**
  * Define multiplication/"*" operator with calculation.
  */
-public class Multiplication extends GeneralOperator
+public class MultiplyOperator extends GeneralOperator
 {
-    public Multiplication()
+    public MultiplyOperator()
     {
         super(MULTIPLY, DIVIDE, 2);
     }
 
     @Override
-    public Double calculate(Double firstParameter, Double secondParameter)
-    {
-        return firstParameter * secondParameter;
+    public CalculateStrategy getCalculationStrategy() {
+        return new Multiply();
     }
 }

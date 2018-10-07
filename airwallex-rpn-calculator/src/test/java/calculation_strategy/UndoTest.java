@@ -1,16 +1,17 @@
-package rpn.operator;
+package calculation_strategy;
 
 import org.junit.Before;
 import org.junit.Test;
+import rpn.calculation_strategy.Undo;
+import rpn.operator.UndoOperator;
 
-public class ClearTest
+public class UndoTest
 {
-    Clear operator;
-
+    Undo operator;
     @Before
     public void setup()
     {
-        operator = new Clear();
+        operator = new Undo();
     }
 
     @Test (expected = ArithmeticException.class)
@@ -18,4 +19,5 @@ public class ClearTest
     {
        operator.calculate(0.0, 1.0);
     }
+
 }

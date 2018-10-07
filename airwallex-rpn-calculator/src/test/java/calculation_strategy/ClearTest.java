@@ -1,17 +1,18 @@
-package rpn.operator;
+package calculation_strategy;
 
 import org.junit.Before;
 import org.junit.Test;
+import rpn.calculation_strategy.Clear;
+import rpn.operator.ClearOperator;
 
-import static junit.framework.TestCase.assertEquals;
-
-public class UndoTest
+public class ClearTest
 {
-    Undo operator;
+    Clear operator;
+
     @Before
     public void setup()
     {
-        operator = new Undo();
+        operator = new Clear();
     }
 
     @Test (expected = ArithmeticException.class)
