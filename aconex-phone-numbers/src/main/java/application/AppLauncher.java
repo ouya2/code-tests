@@ -90,7 +90,8 @@ public class AppLauncher {
         exit(1);
       }
       else {
-        System.out.println(phoneNumberTranslator.translateOneEntry(inputPhoneNumber, phoneNumberWordEntries));
+        List<String> results = phoneNumberTranslator.translateOneEntry(inputPhoneNumber, phoneNumberWordEntries);
+        results.stream().forEach(System.out::println);
       }
     }
   }

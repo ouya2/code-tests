@@ -14,7 +14,7 @@ public interface Translatable {
    * @param entityString
    * @return
    */
-  String translateOneEntry(String entityString, List<PhoneNumberWordEntry> mappingEntries);
+  List<String> translateOneEntry(String entityString, List<PhoneNumberWordEntry> mappingEntries);
 
   /**
    *

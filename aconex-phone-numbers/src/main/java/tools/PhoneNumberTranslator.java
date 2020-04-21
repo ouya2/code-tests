@@ -13,7 +13,7 @@ public class PhoneNumberTranslator implements Translatable {
   }
 
   @Override
-  public String translateOneEntry(String entityString, List<PhoneNumberWordEntry> entries) {
+  public List<String> translateOneEntry(String entityString, List<PhoneNumberWordEntry> entries) {
     return null;
   }
 
