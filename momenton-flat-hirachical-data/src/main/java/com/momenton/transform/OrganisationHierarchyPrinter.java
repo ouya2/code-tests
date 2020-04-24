@@ -6,11 +6,14 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class OrganisationHierachyPrinter {
+/**
+ * Print out the organisation as a hierarchical structure.
+ */
+public class OrganisationHierarchyPrinter {
 
   private final List<Employee> employees;
 
-  public OrganisationHierachyPrinter(Organisation organisation) {
+  public OrganisationHierarchyPrinter(Organisation organisation) {
     this.employees = organisation.getEmployees();
   }
 

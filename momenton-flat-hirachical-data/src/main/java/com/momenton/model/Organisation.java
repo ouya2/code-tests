@@ -2,6 +2,7 @@ package com.momenton.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Organisation {
 
@@ -20,6 +21,9 @@ public class Organisation {
   }
 
   public Employee getEmployeeById(Integer id) {
-    return employees.get(id);
+    Optional<Employee> employeeOptional = employees.stream()
+        .filter(employee -> employee.getId().equals(id))
+        .findFirst();
+    return employeeOptional.orElse(null);
   }
 }

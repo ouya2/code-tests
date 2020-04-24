@@ -30,5 +30,9 @@ memory database etc), file system or even a data structure like List or Map. The
 #Assumption
 The company only has one CEO. 
 
+#Future Improvement
+Recursive function can have impact on performance when the hierachy is complicated, 
+potentially the loop iteration or streaming can be used to go through the csv file.
+
 # Compile & Run
 

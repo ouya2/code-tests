@@ -4,12 +4,11 @@ import com.momenton.model.Employee;
 import com.momenton.model.Organisation;
 import org.junit.Test;
 
-public class OrganisationHierachyPrinterTest {
-
+public class OrganisationHierarchyPrinterTest {
 
   @Test
-  public void testDisplayOrganisationHierachySuccess() {
-    OrganisationHierachyPrinter printer = new OrganisationHierachyPrinter(getOrganisation());
+  public void testDisplayOrganisationHierarchySuccess() {
+    OrganisationHierarchyPrinter printer = new OrganisationHierarchyPrinter(getOrganisation());
     printer.displayOrganisationHierachy();
   }
 
