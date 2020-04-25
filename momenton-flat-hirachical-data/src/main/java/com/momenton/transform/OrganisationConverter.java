@@ -6,9 +6,12 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 import com.momenton.exception.IllegalCSVFileException;
 import com.momenton.model.Employee;
 import com.momenton.model.Organisation;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.List;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -27,11 +30,12 @@ public class OrganisationConverter {
   public static final String ID_HEADER = "id";
   public static final String MANAGER_ID_HEADER = "Manager id";
 
-  public Organisation toOrganisationFromFile(InputStream fileInputStream) throws IOException {
+  public Organisation toOrganisationFromFile(String csvFile) throws IOException {
     Organisation organisation = new Organisation();
-    if (fileInputStream != null) {
+    if (isNotEmpty(csvFile)) {
+      BufferedReader reader = new BufferedReader(new FileReader(csvFile));
       CSVParser csvParser = CSVFormat.EXCEL
-          .withFirstRecordAsHeader().parse(new InputStreamReader(fileInputStream));
+          .withFirstRecordAsHeader().parse(reader);
       List<CSVRecord> records = csvParser.getRecords();
       records.forEach(record -> organisation.addEmployee(createEmployee(record)));
     }

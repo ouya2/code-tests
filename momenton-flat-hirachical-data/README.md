@@ -31,8 +31,18 @@ memory database etc), file system or even a data structure like List or Map. The
 The company only has one CEO. 
 
 #Future Improvement
-Recursive function can have impact on performance when the hierachy is complicated, 
+Recursive function can have impact on performance when the hierarchy is complicated, 
 potentially the loop iteration or streaming can be used to go through the csv file.
 
 # Compile & Run
+The project can be compiled with command:
+    gradle clean install
+
+The company data is copied to a CSV file, the first line of the csv should be the header of each 
+field. e.g: Employee Name. 
+
+The run command:
+
+java -jar organisationLoader.jar -f [path to CSV file]
+
 

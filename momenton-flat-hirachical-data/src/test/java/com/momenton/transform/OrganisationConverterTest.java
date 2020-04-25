@@ -8,7 +8,6 @@ import com.momenton.exception.IllegalCSVFileException;
 import com.momenton.model.Employee;
 import com.momenton.model.Organisation;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
@@ -34,8 +33,8 @@ public class OrganisationConverterTest {
 
   @Test
   public void testOrganisationConverterSuccess() throws IOException {
-    InputStream inputStream = this.getClass().getResourceAsStream(TEST_FILE);
-    Organisation org = converter.toOrganisationFromFile(inputStream);
+    String testFile = this.getClass().getResource(TEST_FILE).getFile();
+    Organisation org = converter.toOrganisationFromFile(testFile);
     List<Employee> employeeList = org.getEmployees();
     assertEquals(6, employeeList.size());
     Employee ceo = org.getEmployeeById(150);
@@ -47,13 +46,13 @@ public class OrganisationConverterTest {
 
   @Test (expected = IllegalCSVFileException.class)
   public void testInvalidCSVRecordWithoutId() throws IOException {
-    InputStream inputStream = this.getClass().getResourceAsStream(INVALID_CSV_WITHOUT_ID);
-    Organisation org = converter.toOrganisationFromFile(inputStream);
+    String testFile = this.getClass().getResource(INVALID_CSV_WITHOUT_ID).getFile();
+    converter.toOrganisationFromFile(testFile);
   }
 
   @Test (expected = IllegalCSVFileException.class)
   public void testInvalidCSVRecordWithoutName() throws IOException {
-    InputStream inputStream = this.getClass().getResourceAsStream(INVALID_CSV_WITHOUT_NAME);
-    Organisation org = converter.toOrganisationFromFile(inputStream);
+    String testFile = this.getClass().getResource(INVALID_CSV_WITHOUT_NAME).getFile();
+    converter.toOrganisationFromFile(testFile);
   }
 }
