@@ -9,7 +9,7 @@ import org.junit.Test;
 public class OrganisationHierarchyCreatorTest {
 
   @Test
-  public void testDisplayOrganisationHierarchySuccess() {
+  public void testGenerateOrganisationHierarchySuccess() {
     OrganisationHierarchyCreator printer = new OrganisationHierarchyCreator(getOrganisation());
     assertEquals("-Jamie\r\n"
             + " \t-Alan\r\n"
@@ -19,6 +19,12 @@ public class OrganisationHierarchyCreatorTest {
             + " \t\t-David\r\n"
             + " ",
         printer.generateOrganisationHierarchy());
+  }
+
+  @Test
+  public void testGenerateOrganisationHierarchyWithoutEmployees() {
+    OrganisationHierarchyCreator printer = new OrganisationHierarchyCreator(new Organisation());
+    assertEquals("", printer.generateOrganisationHierarchy());
   }
 
   private Organisation getOrganisation() {
