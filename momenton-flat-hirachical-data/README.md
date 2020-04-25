@@ -1,7 +1,7 @@
 # About
 A utility transforms the flat data into hierarchical data and display the result.  
 
-#Requirement
+# Requirement
 Below is employee data of a small company.
 It represents the hierarchical relationship among employees. CEO of the company doesn't
 have a manager.
@@ -27,10 +27,10 @@ memory database etc), file system or even a data structure like List or Map. The
 |      | Steve  |        |
 |      |        | David  |
 
-#Assumption
+# Assumption
 The company only has one CEO. 
 
-#Future Improvement
+# Future Improvement
 Recursive function can have impact on performance when the hierarchy is complicated, 
 potentially the loop iteration or streaming can be used to go through the csv file.
 
