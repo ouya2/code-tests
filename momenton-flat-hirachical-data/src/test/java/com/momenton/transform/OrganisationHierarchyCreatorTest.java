@@ -1,15 +1,24 @@
 package com.momenton.transform;
 
+import static org.junit.Assert.assertEquals;
+
 import com.momenton.model.Employee;
 import com.momenton.model.Organisation;
 import org.junit.Test;
 
-public class OrganisationHierarchyPrinterTest {
+public class OrganisationHierarchyCreatorTest {
 
   @Test
   public void testDisplayOrganisationHierarchySuccess() {
-    OrganisationHierarchyPrinter printer = new OrganisationHierarchyPrinter(getOrganisation());
-    printer.displayOrganisationHierarchy();
+    OrganisationHierarchyCreator printer = new OrganisationHierarchyCreator(getOrganisation());
+    assertEquals("-Jamie\r\n"
+            + " \t-Alan\r\n"
+            + " \t\t-Martin\r\n"
+            + " \t\t-Alex\r\n"
+            + " \t-Steve\r\n"
+            + " \t\t-David\r\n"
+            + " ",
+        printer.generateOrganisationHierarchy());
   }
 
   private Organisation getOrganisation() {

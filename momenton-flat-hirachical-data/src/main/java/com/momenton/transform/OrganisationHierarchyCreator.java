@@ -7,24 +7,30 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
- * Print out the organisation as a hierarchical structure.
+ * Create the organisation as a hierarchical structure.
  */
-public class OrganisationHierarchyPrinter {
+public class OrganisationHierarchyCreator {
+
+  public static final String TAB = "\t";
+  public static final String DASH = "-";
+  public static final String SPACE = " ";
 
   private final List<Employee> employees;
 
-  public OrganisationHierarchyPrinter(Organisation organisation) {
+  public OrganisationHierarchyCreator(Organisation organisation) {
     this.employees = organisation.getEmployees();
   }
 
-  public void displayOrganisationHierarchy() {
+  public String generateOrganisationHierarchy() {
     Optional<Employee> ceo = employees.stream()
         .filter(employee -> employee.getManagerId() == null)
         .findFirst();
     ceo.ifPresent(this::buildOrganisationHierarchy);
 
     int tab = 0;
-    ceo.ifPresent(employee -> printOrganisation(employee, tab));
+    StringBuilder hierarchyTextBuilder = new StringBuilder();
+    ceo.ifPresent(employee -> toHierarchyText(employee, tab, hierarchyTextBuilder));
+    return hierarchyTextBuilder.substring(0, hierarchyTextBuilder.length());
   }
 
   private void buildOrganisationHierarchy(Employee employee) {
@@ -40,15 +46,18 @@ public class OrganisationHierarchyPrinter {
     managedEmployees.forEach(this::buildOrganisationHierarchy);
   }
 
-  private void printOrganisation(Employee employee, int numOfTabs) {
+  private void toHierarchyText(Employee employee, int numOfTabs, StringBuilder stringBuilder) {
     for (int i = 0; i < numOfTabs; i++) {
-      System.out.print("\t");
+      stringBuilder.append(TAB);
     }
-    System.out.println("-" + employee.getName());
+    stringBuilder.append(DASH)
+        .append(employee.getName())
+        .append(System.lineSeparator());
+
     List<Employee> subEmployees = employee.getSubEmployees();
-    System.out.print(" ");
+    stringBuilder.append(SPACE);
     for (Employee e : subEmployees) {
-      printOrganisation(e, numOfTabs + 1);
+      toHierarchyText(e, numOfTabs + 1, stringBuilder);
     }
   }
 }
