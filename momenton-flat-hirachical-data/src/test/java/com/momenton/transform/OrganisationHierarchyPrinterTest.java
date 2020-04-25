@@ -9,7 +9,7 @@ public class OrganisationHierarchyPrinterTest {
   @Test
   public void testDisplayOrganisationHierarchySuccess() {
     OrganisationHierarchyPrinter printer = new OrganisationHierarchyPrinter(getOrganisation());
-    printer.displayOrganisationHierachy();
+    printer.displayOrganisationHierarchy();
   }
 
   private Organisation getOrganisation() {

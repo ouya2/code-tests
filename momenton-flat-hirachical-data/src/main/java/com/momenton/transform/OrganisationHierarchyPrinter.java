@@ -17,17 +17,17 @@ public class OrganisationHierarchyPrinter {
     this.employees = organisation.getEmployees();
   }
 
-  public void displayOrganisationHierachy() {
+  public void displayOrganisationHierarchy() {
     Optional<Employee> ceo = employees.stream()
         .filter(employee -> employee.getManagerId() == null)
         .findFirst();
-    ceo.ifPresent(this::buildOrganisationHierachy);
+    ceo.ifPresent(this::buildOrganisationHierarchy);
 
     int tab = 0;
     ceo.ifPresent(employee -> printOrganisation(employee, tab));
   }
 
-  private void buildOrganisationHierachy(Employee employee) {
+  private void buildOrganisationHierarchy(Employee employee) {
     List<Employee> managedEmployees =
         employees.stream()
         .filter(oneEmployee -> employee.getId().equals(oneEmployee.getManagerId()))
@@ -37,7 +37,7 @@ public class OrganisationHierarchyPrinter {
       return;
     }
 
-    managedEmployees.forEach(this::buildOrganisationHierachy);
+    managedEmployees.forEach(this::buildOrganisationHierarchy);
   }
 
   private void printOrganisation(Employee employee, int numOfTabs) {
