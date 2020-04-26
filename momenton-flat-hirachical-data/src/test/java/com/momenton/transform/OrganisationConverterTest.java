@@ -17,6 +17,8 @@ public class OrganisationConverterTest {
   private static final String TEST_FILE = "/employees.csv";
   private static final String INVALID_CSV_WITHOUT_ID = "/invalidEmployeesWithoutId.csv";
   private static final String INVALID_CSV_WITHOUT_NAME = "/invalidEmployeesWithoutName.csv";
+  private static final String INVALID_CSV_WITH_MULTIPLE_CEOS = "/invalidEmployeesWithMultipleCEOs.csv";
+  private static final String INVALID_CSV_WITHOUT_CEO = "/invalidEmployeesWithoutCEO.csv";
 
   private OrganisationConverter converter;
 
@@ -53,6 +55,18 @@ public class OrganisationConverterTest {
   @Test (expected = IllegalCSVFileException.class)
   public void testInvalidCSVRecordWithoutName() throws IOException {
     String testFile = this.getClass().getResource(INVALID_CSV_WITHOUT_NAME).getFile();
+    converter.toOrganisationFromFile(testFile);
+  }
+
+  @Test (expected = IllegalCSVFileException.class)
+  public void testMultipleCEOCSVRecordFailure() throws IOException {
+    String testFile = this.getClass().getResource(INVALID_CSV_WITH_MULTIPLE_CEOS).getFile();
+    converter.toOrganisationFromFile(testFile);
+  }
+
+  @Test (expected = IllegalCSVFileException.class)
+  public void testCSVRecordWithoutCEOFailure() throws IOException {
+    String testFile = this.getClass().getResource(INVALID_CSV_WITHOUT_CEO).getFile();
     converter.toOrganisationFromFile(testFile);
   }
 }

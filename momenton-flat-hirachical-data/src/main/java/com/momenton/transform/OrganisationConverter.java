@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
@@ -35,6 +36,14 @@ public class OrganisationConverter {
           .withFirstRecordAsHeader().parse(reader);
       List<CSVRecord> records = csvParser.getRecords();
       records.forEach(record -> organisation.addEmployee(createEmployee(record)));
+      List<Employee> topManagers = organisation.getEmployees()
+          .stream()
+          .filter(employee -> employee.getManagerId() == null)
+          .collect(Collectors.toList());
+      if (topManagers.size() != 1) {
+        logger.error("Expected one CEO only.");
+        throw new IllegalCSVFileException("CSV record is invalid");
+      }
     }
     return organisation;
   }
@@ -57,5 +66,4 @@ public class OrganisationConverter {
     }
     return employee;
   }
-
 }
