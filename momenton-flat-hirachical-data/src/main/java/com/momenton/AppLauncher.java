@@ -28,7 +28,7 @@ public class AppLauncher {
       String csvFile;
       if (!cmd.hasOption("f")) {
         System.out.println("CSV file not specified, use default file: ");
-        csvFile = AppLauncher.class.getResource("/employees.csv").getFile();
+        csvFile = "";
       }
       else {
         csvFile = cmd.getOptionValue("f");

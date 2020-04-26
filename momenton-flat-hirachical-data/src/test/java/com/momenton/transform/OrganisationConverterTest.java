@@ -1,8 +1,8 @@
 package com.momenton.transform;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 
 import com.momenton.exception.IllegalCSVFileException;
 import com.momenton.model.Employee;
@@ -28,9 +28,9 @@ public class OrganisationConverterTest {
   }
 
   @Test
-  public void testEmptyFile() throws IOException {
+  public void testCSVFileNotSpecified() throws IOException {
     Organisation organisation = converter.toOrganisationFromFile(null);
-    assertTrue(organisation.getEmployees().isEmpty());
+    assertFalse(organisation.getEmployees().isEmpty());
   }
 
   @Test

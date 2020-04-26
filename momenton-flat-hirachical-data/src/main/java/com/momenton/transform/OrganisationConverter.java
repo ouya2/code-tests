@@ -9,6 +9,8 @@ import com.momenton.model.Organisation;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.apache.commons.csv.CSVFormat;
@@ -27,23 +29,27 @@ public class OrganisationConverter {
   public static final String EMPLOYEE_NAME_HEADER = "Employee Name";
   public static final String ID_HEADER = "id";
   public static final String MANAGER_ID_HEADER = "Manager id";
+  public static final String DEFAULT_CSV_FILE = "/employees.csv";
 
   public Organisation toOrganisationFromFile(String csvFile) throws IOException {
     Organisation organisation = new Organisation();
+    CSVParser csvParser;
     if (isNotEmpty(csvFile)) {
       BufferedReader reader = new BufferedReader(new FileReader(csvFile));
-      CSVParser csvParser = CSVFormat.EXCEL
-          .withFirstRecordAsHeader().parse(reader);
-      List<CSVRecord> records = csvParser.getRecords();
-      records.forEach(record -> organisation.addEmployee(createEmployee(record)));
-      List<Employee> topManagers = organisation.getEmployees()
-          .stream()
-          .filter(employee -> employee.getManagerId() == null)
-          .collect(Collectors.toList());
-      if (topManagers.size() != 1) {
-        logger.error("Expected one CEO only.");
-        throw new IllegalCSVFileException("CSV record is invalid");
-      }
+      csvParser = CSVFormat.EXCEL.withFirstRecordAsHeader().parse(reader);
+    } else {
+      InputStream in = getClass().getResourceAsStream(DEFAULT_CSV_FILE);
+      csvParser = CSVFormat.EXCEL.withFirstRecordAsHeader().parse(new InputStreamReader(in));
+    }
+    List<CSVRecord> records = csvParser.getRecords();
+    records.forEach(record -> organisation.addEmployee(createEmployee(record)));
+    List<Employee> topManagers = organisation.getEmployees()
+        .stream()
+        .filter(employee -> employee.getManagerId() == null)
+        .collect(Collectors.toList());
+    if (topManagers.size() != 1) {
+      logger.error("Expected one CEO only.");
+      throw new IllegalCSVFileException("CSV record is invalid");
     }
     return organisation;
   }
