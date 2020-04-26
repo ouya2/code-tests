@@ -13,12 +13,12 @@ import org.apache.commons.cli.ParseException;
 /**
  * Application Launcher
  */
-public class OrganisationLoader {
+public class AppLauncher {
 
   public static void main(String[] args) {
 
     Options options = new Options();
-    options.addOption("f", false,
+    options.addOption("f", true,
         "Please specify csv file to load organisation data.");
 
     try {
@@ -28,7 +28,7 @@ public class OrganisationLoader {
       String csvFile;
       if (!cmd.hasOption("f")) {
         System.out.println("CSV file not specified, use default file: ");
-        csvFile = OrganisationLoader.class.getResource("/employees.csv").getFile();
+        csvFile = AppLauncher.class.getResource("/employees.csv").getFile();
       }
       else {
         csvFile = cmd.getOptionValue("f");

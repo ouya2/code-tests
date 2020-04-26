@@ -34,15 +34,20 @@ The company only has one CEO.
 Recursive function can have impact on performance when the hierarchy is complicated, 
 potentially the loop iteration or streaming can be used to go through the csv file.
 
+# Instructions
+   1. Requires Java 1.8+ & Gradle 4.9 
+   2. Format the organisation csv data with the format "Employee Name,id,Manager id".  
+
 # Compile & Run
 The project can be compiled with command:
+    
     gradle clean install
 
 The company data is copied to a CSV file, the first line of the csv should be the header of each 
-field. e.g: Employee Name. 
+field. 
 
 The run command:
 
-java -jar organisationLoader.jar -f [path to CSV file]
+    java -jar organisationLoader.jar -f [path to CSV file]
 
 
