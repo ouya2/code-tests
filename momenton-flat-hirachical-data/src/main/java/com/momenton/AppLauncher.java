@@ -25,10 +25,9 @@ public class AppLauncher {
       CommandLineParser parser = new DefaultParser();
       CommandLine cmd = parser.parse(options, args);
 
-      String csvFile;
+      String csvFile = "";
       if (!cmd.hasOption("f")) {
         System.out.println("CSV file not specified, use default file: ");
-        csvFile = "";
       }
       else {
         csvFile = cmd.getOptionValue("f");
